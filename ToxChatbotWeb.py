@@ -79,7 +79,7 @@ if prompt:
     with st.chat_message("user", avatar=USER_AVATAR):
         st.markdown(prompt.replace("\n", "  \n"), unsafe_allow_html=True)
 
-    with st.spinner("⏳ 답변을 가져오는 중..."):
+    with st.spinner("⏳ 답변 생성하는 중..."):
         try:
             response = requests.post(API_URL, json={"question": prompt}, timeout=10)
             response.raise_for_status()
