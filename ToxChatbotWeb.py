@@ -44,7 +44,7 @@ st.markdown(
     <h1 class="title">🧪 Tox-Info Chatbot</h1>
 
     <p class="intro">
-        안녕하세요! 저는 <span class="highlight">독성정보 챗봇</span>이에요.ㅋㅋ 🤖🤖</span><br>
+        안녕하세요! 저는 <span class="highlight">독성정보 챗봇</span>이에요. 🤖🤖</span><br>
         독성정보와 관련된 질문을 해주시거나, <br><질문예시>를 참고해 <span class="highlight">더 구체적인 내용을 말씀해 주시면</span> 도움을 드릴 수 있을 것 같아요!
     </p>
 
