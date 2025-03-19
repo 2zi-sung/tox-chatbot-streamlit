@@ -15,16 +15,16 @@ BOT_AVATAR = "🤖"
 USER_AVATAR = "🧑"
 
 keywords = [
-    "의 독성", "의 요약", "의 물질정보", "의 영문물질명", "의 국문물질명", "의 CAS No", "의 구조식", "의 분자식",
-    "의 분자량", "의 영문유사명", "의 국문유사명", "의 색깔 및 성상", "의 냄새", "의 끓는점", "의 어는점", "의 증기압",
-    "의 밀도/비중", "의 용해도", "의 GHS픽토그램", "의 용도", "의 독성정보", "의 인체 영향 정보", "의 인체영향-증상",
-    "의 인체영향-사례보고", "의 인체영향-역학연구", "의 인체영향-기타", "의 동물 독성시험 정보", "의 급성 독성",
-    "의 반복투여 독성", "의 생식발생 독성", "의 유전독성 및 변이원성", "의 눈/피부자극성", "의 면역 독성", "의 기타",
-    "의 발암성", "의 발암성 등급 분류", "의 IARC분류", "의 NTP분류", "의 US EPA분류", "의 US EPA분류2", "의 US EPA분류3",
-    "의 인체 발암성 정보", "의 동물 발암성시험 정보", "의 TD50 및 Acceptable Intake(AI) 정보", "의 독성동태학 정보",
-    "의 인체 정보", "의 동물 정보", "의 흡수", "의 분포", "의 대사", "의 배설", "의 응급치료정보", "의 일반적 치료정보",
-    "의 특이적 치료정보", "의 참고문헌", "의 URL", "의 관련DB링크", "의 국가위험물관리시스템",
-    "의 화학물질정보검색시스템", "의 일반적인 특성"
+    "의 독성:", "의 요약:", "의 물질정보:", "의 영문물질명:", "의 국문물질명:", "의 CAS No:", "의 구조식:", "의 분자식:",
+    "의 분자량:", "의 영문유사명:", "의 국문유사명:", "의 색깔 및 성상:", "의 냄새:", "의 끓는점:", "의 어는점:", "의 증기압:",
+    "의 밀도/비중:", "의 용해도:", "의 GHS픽토그램:", "의 용도:", "의 독성정보:", "의 인체 영향 정보:", "의 인체영향-증상:",
+    "의 인체영향-사례보고:", "의 인체영향-역학연구:", "의 인체영향-기타:", "의 동물 독성시험 정보:", "의 급성 독성:",
+    "의 반복투여 독성:", "의 생식발생 독성:", "의 유전독성 및 변이원성:", "의 눈/피부자극성:", "의 면역 독성:", "의 기타:",
+    "의 발암성:", "의 발암성 등급 분류:", "의 IARC분류:", "의 NTP분류:", "의 US EPA분류:", "의 US EPA분류2:", "의 US EPA분류3:",
+    "의 인체 발암성 정보:", "의 동물 발암성시험 정보:", "의 TD50 및 Acceptable Intake(AI) 정보:", "의 독성동태학 정보:",
+    "의 인체 정보:", "의 동물 정보:", "의 흡수:", "의 분포:", "의 대사:", "의 배설:", "의 응급치료정보:", "의 일반적 치료정보:",
+    "의 특이적 치료정보:", "의 참고문헌:", "의 URL:", "의 관련DB링크:", "의 국가위험물관리시스템:",
+    "의 화학물질정보검색시스템:", "의 일반적인 특성:"
 ]
 
 st.markdown(
@@ -133,17 +133,19 @@ if prompt:
     #         st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
     #     else:
     #         st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
+    with st.chat_message("ai", avatar="🤖"):
+        if answer:  
+            text = answer
 
-    st.session_state.conversation.append(("ai", answer))
+            lines = text.split("\n")
 
-    with st.chat_message("ai", avatar=BOT_AVATAR):
-        if answer:
-            text = answer 
-            
+            processed_lines = []
 
-            for keyword in keywords:
-                text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
+            for line in lines:
+                if any(keyword in line for keyword in keywords):
+                    processed_lines.append(f"**{line}**")  
+                else:
+                    processed_lines.append(line)  
 
-            st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
-        else:
-            st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
+            formatted_text = "\n\n".join(processed_lines)
+            st.markdown(formatted_text)
