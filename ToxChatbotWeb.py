@@ -122,8 +122,12 @@ if prompt:
 
     st.session_state.conversation.append(("ai", answer))
     with st.chat_message("ai", avatar=BOT_AVATAR):
-        for keyword in keywords:
-            text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
+        if answer: 
+            text = answer
+            
+            for keyword in keywords:
+                text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
 
-        # st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
-        st.markdown(answer.replace("\n", "  \n"), unsafe_allow_html=True)
+            st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
+        else:
+            st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
