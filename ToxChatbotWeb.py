@@ -134,24 +134,16 @@ if prompt:
     #     else:
     #         st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
 
-    with st.chat_message("ai", avatar="🤖"):
-        if answer:  
-            text = answer  # ✅ 기존 텍스트
+    st.session_state.conversation.append(("ai", answer))
 
-            # ✅ 줄 단위로 나누기
-            lines = text.split("\n")
-            processed_lines = []
+    with st.chat_message("ai", avatar=BOT_AVATAR):
+        if answer:
+            text = answer 
+            
 
-            for line in lines:
-                # ✅ keywords 리스트에 포함된 줄이면 볼드 처리 (Markdown 헤더 적용)
-                if any(line.startswith(keyword) for keyword in keywords):
-                    processed_lines.append(f"### {line}")  # ✅ Heading 3 적용 (볼드 + 크기 증가)
-                else:
-                    processed_lines.append(line)  # ✅ 일반 텍스트 유지
+            for keyword in keywords:
+                text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
 
-            # ✅ Markdown 형식으로 출력 (줄바꿈 추가)
-            text = "\n\n".join(processed_lines)
-            st.markdown(text)  # ✅ Markdown으로 안전하게 출력
-
+            st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
         else:
             st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
