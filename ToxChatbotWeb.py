@@ -18,14 +18,14 @@ st.markdown(
         .title {
             font-size: 36px;
             font-weight: bold;
-            text-align: center;
+            text-align: justify;
             color: #4A90E2;  /* 푸른 계열 색상 */
         }
         .intro {
             font-size: 18px;
             font-weight: bold;
             color: #2E2E2E;
-            text-align: center;
+            text-align: justify;
             background-color: #F4F8FF;
             padding: 15px;
             border-radius: 10px;
@@ -36,11 +36,13 @@ st.markdown(
         }
         .example {
             font-size: 16px;
-            background-color: #00008b;
+            background-color: #F0F0F0;
+            text-align: justify;
             padding: 10px;
             border-left: 5px solid #4A90E2;
             border-radius: 5px;
             margin-top: 10px;
+            color: #000000;
         }
     </style>
 
@@ -58,11 +60,11 @@ st.markdown(
     <div class="example">
         <b><질문 예시></b><br>
         - <b>에탄올</b>의 흡수 과정에 대해 알려줘.<br>
-        - <b>메틸파라티온</b>의 독성 데이터를 제공해줘.
+        - <b>포름알데하이드</b>의 발암성 등급에 대해서 알려줘.
     </div>
 
     <p style="text-align: center; margin-top: 15px;">
-        위와 같은 방식으로 질문하면 <span class="highlight">더 정확한 답변</span>을 받을 수 있습니다.
+        📌 위와 같은 방식으로 질문하면 <span class="highlight">더 정확한 답변</span>을 받을 수 있습니다.
     </p>
     """,
     unsafe_allow_html=True
