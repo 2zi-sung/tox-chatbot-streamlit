@@ -133,19 +133,41 @@ if prompt:
     #         st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
     #     else:
     #         st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
+    # with st.chat_message("ai", avatar="🤖"):
+    #     if answer:  
+    #         text = answer
+
+    #         lines = text.split("\n")
+
+    #         processed_lines = []
+
+    #         for line in lines:
+    #             if any(keyword in line for keyword in keywords):
+    #                 processed_lines.append(f"**{line}**")  
+    #             else:
+    #                 processed_lines.append(line)  
+
+    #         formatted_text = "\n\n".join(processed_lines)
+    #         st.markdown(formatted_text)
+
     with st.chat_message("ai", avatar="🤖"):
         if answer:  
-            text = answer
+            text = answer  # ✅ 기존 텍스트
 
+            # ✅ 줄 단위로 나누기
             lines = text.split("\n")
-
             processed_lines = []
 
             for line in lines:
                 if any(keyword in line for keyword in keywords):
-                    processed_lines.append(f"**{line}**")  
+                    # ✅ 볼드 + 폰트 크기 증가 (HTML 적용)
+                    processed_lines.append(f'<p style="font-size:18px; font-weight:bold;">{line}</p>')  
                 else:
-                    processed_lines.append(line)  
+                    processed_lines.append(f'<p style="font-size:16px;">{line}</p>')  # ✅ 기본 폰트 유지
 
-            formatted_text = "\n\n".join(processed_lines)
-            st.markdown(formatted_text)
+            # ✅ 줄바꿈 유지하여 HTML 출력
+            formatted_text = "".join(processed_lines)
+            st.markdown(formatted_text, unsafe_allow_html=True)  # ✅ HTML 스타일 적용
+
+        else:
+            st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
