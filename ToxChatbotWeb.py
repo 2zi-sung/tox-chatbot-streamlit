@@ -16,7 +16,7 @@ st.markdown(
     """
     <style>
         .title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             text-align: center;
             color: #00008b;  /* 푸른 계열 색상 */
