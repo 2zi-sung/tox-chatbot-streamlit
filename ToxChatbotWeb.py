@@ -16,16 +16,16 @@ st.markdown(
     """
     <style>
         .title {
-            font-size: 36px;
+            font-size: 18px;
             font-weight: bold;
-            text-align: justify;
-            color: #4A90E2;  /* 푸른 계열 색상 */
+            text-align: center;
+            color: #00008b;  /* 푸른 계열 색상 */
         }
         .intro {
             font-size: 18px;
             font-weight: bold;
             color: #2E2E2E;
-            text-align: justify;
+            text-align: center;
             background-color: #F4F8FF;
             padding: 15px;
             border-radius: 10px;
@@ -35,7 +35,7 @@ st.markdown(
             color: #D0021B; /* 빨간색 강조 */
         }
         .example {
-            font-size: 16px;
+            font-size: 18px;
             background-color: #F4F8FF;
             text-align: justify;
             padding: 10px;
