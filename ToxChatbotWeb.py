@@ -5,9 +5,12 @@ import os
 
 load_dotenv()
 API_URL = os.getenv("API_URL")
-BOT_AVATAR = os.getenv("BOT_AVATAR")
-USER_AVATAR = os.getenv("USER_AVATAR")
+# BOT_AVATAR = os.getenv("BOT_AVATAR")
+# USER_AVATAR = os.getenv("USER_AVATAR")
 SIDE_BAR_IMG = os.getenv("SIDE_BAR_IMG")
+
+BOT_AVATAR = "🤖"
+USER_AVATAR = "🧑"
 
 st.markdown(
     """
@@ -41,11 +44,13 @@ st.markdown(
         }
     </style>
 
-    <h1 class="title">🧪 Tox-Info Chatbot</h1>
+    <h1 class="title">Tox-Info Chatbot</h1>
 
     <p class="intro">
-        안녕하세요! 저는 <span class="highlight">독성정보 챗봇</span>이에요. 🤖🤖</span><br>
-        독성정보와 관련된 질문을 해주시거나, <br><질문예시>를 참고해 <span class="highlight">더 구체적인 내용을 말씀해 주시면</span> 도움을 드릴 수 있을 것 같아요!
+        본 페이지는 챗봇의 질문-답변 정확성 검증을 위한 <span class="highlight">데모 서버</span>입니다.
+        UI 디자인이나 부가적인 기능 구현은 제외되었으며, 오로지 질의응답 테스트만을 목적으로 제공됩니다.
+        
+        정확한 답변을 얻기 위해서는 '물질명 + 전문보기 항목' 형식으로 입력하시기 바랍니다.
     </p>
 
     <div class="example">
