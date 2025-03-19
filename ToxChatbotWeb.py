@@ -48,14 +48,12 @@ st.markdown(
 
     <p class="intro">
         본 페이지는 <span class="highlight">챗봇의 질문-답변 정확성 검증</span>을 위한 <span class="highlight">데모 서버</span>입니다.
+        UI 디자인이나 부가적인 기능 구현은 제외되었으며,
+        <strong>오로지 질의응답 테스트</strong>만을 목적으로 제공됩니다.
     </p>
 
     <p class="intro">
-        UI 디자인이나 부가적인 기능 구현은 제외되었으며, <strong>오로지 질의응답 테스트</strong>만을 목적으로 제공됩니다.
-    </p>
-
-    <p class="intro">
-        <strong>정확한 답변을 얻기 위해서는</strong> <em>'물질명 + 전문보기 항목'</em> 형식으로 입력하시기 바랍니다.
+        <strong>정확한 답변을 얻기 위해서는</strong> <span class="highlight">'물질명 + 전문보기 항목'</span> 형식으로 입력하시기 바랍니다.
     </p>
 
     <div class="example">
@@ -65,7 +63,7 @@ st.markdown(
     </div>
 
     <p style="text-align: center; margin-top: 15px;">
-        위와 같은 방식으로 질문하면 <span class="highlight">더 정확한 답변</span>을 받을 수 있어요! 😊
+        위와 같은 방식으로 질문하면 <span class="highlight">더 정확한 답변</span>을 받을 수 있습니다.
     </p>
     """,
     unsafe_allow_html=True
