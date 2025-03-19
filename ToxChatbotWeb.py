@@ -26,10 +26,7 @@ keywords = [
     "의 특이적 치료정보", "의 참고문헌", "의 URL", "의 관련DB링크", "의 국가위험물관리시스템",
     "의 화학물질정보검색시스템", "의 일반적인 특성"
 ]
-keywords = [
-    "일반적인 특성:", "냄새:", "독성정보:", "인체 영향 정보:", "발암성 등급 분류:",
-    "급성 독성:", "반복투여 독성:", "응급치료정보:", "일반적 치료정보:", "특이적 치료정보:"
-]
+
 st.markdown(
     """
     <style>
@@ -137,9 +134,9 @@ if prompt:
     #     else:
     #         st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
 
-    with st.chat_message("ai", avatar=BOT_AVATAR):
+    with st.chat_message("ai", avatar="🤖"):
         if answer:  
-            text = answer
+            text = answer  # ✅ 기존 텍스트
 
             # ✅ 줄 단위로 나누기
             lines = text.split("\n")
@@ -148,12 +145,13 @@ if prompt:
             for line in lines:
                 # ✅ keywords 리스트에 포함된 줄이면 볼드 처리
                 if any(line.startswith(keyword) for keyword in keywords):
-                    processed_lines.append(f"**{line}**")  # ✅ 줄 전체를 볼드 처리
+                    processed_lines.append(f"**{line}**")  # ✅ 볼드 처리
                 else:
                     processed_lines.append(line)  # ✅ 일반 텍스트 유지
 
-            # ✅ 줄바꿈 처리 후 Streamlit에 출력
-            text = "\n".join(processed_lines)
-            st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
+            # ✅ 줄바꿈을 유지하면서 Markdown 출력 (⚠ unsafe_allow_html 제거)
+            text = "\n\n".join(processed_lines)  # ✅ 두 줄 띄우기로 Markdown 줄바꿈 유지
+            st.markdown(text)  # ✅ 안전한 Markdown 처리
+
         else:
             st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
