@@ -12,6 +12,19 @@ SIDE_BAR_IMG = os.getenv("SIDE_BAR_IMG")
 BOT_AVATAR = "🤖"
 USER_AVATAR = "🧑"
 
+keywords = [
+    "독성", "요약", "물질정보", "영문물질명", "국문물질명", "CAS No", "구조식", "분자식",
+    "분자량", "영문유사명", "국문유사명", "색깔 및 성상", "냄새", "끓는점", "어는점", "증기압",
+    "밀도/비중", "용해도", "GHS픽토그램", "용도", "독성정보", "인체 영향 정보", "인체영향-증상",
+    "인체영향-사례보고", "인체영향-역학연구", "인체영향-기타", "동물 독성시험 정보", "급성 독성",
+    "반복투여 독성", "생식발생 독성", "유전독성 및 변이원성", "눈/피부자극성", "면역 독성", "기타",
+    "발암성", "발암성 등급 분류", "IARC분류", "NTP분류", "US EPA분류", "US EPA분류2", "US EPA분류3",
+    "인체 발암성 정보", "동물 발암성시험 정보", "TD50 및 Acceptable Intake(AI) 정보", "독성동태학 정보",
+    "인체 정보", "동물 정보", "흡수", "분포", "대사", "배설", "응급치료정보", "일반적 치료정보",
+    "특이적 치료정보", "참고문헌", "URL", "관련DB링크", "국가위험물관리시스템",
+    "화학물질정보검색시스템"
+]
+
 st.markdown(
     """
     <style>
@@ -109,4 +122,8 @@ if prompt:
 
     st.session_state.conversation.append(("ai", answer))
     with st.chat_message("ai", avatar=BOT_AVATAR):
+        for keyword in keywords:
+            text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
+
+        # st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
         st.markdown(answer.replace("\n", "  \n"), unsafe_allow_html=True)
