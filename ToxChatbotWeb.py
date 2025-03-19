@@ -36,7 +36,7 @@ st.markdown(
         }
         .example {
             font-size: 16px;
-            background-color: #F0F0F0;
+            background-color: #F4F8FF;
             text-align: justify;
             padding: 10px;
             border-left: 5px solid #4A90E2;
@@ -59,8 +59,8 @@ st.markdown(
 
     <div class="example">
         <b><질문 예시></b><br>
-        - <b>에탄올</b>의 흡수 과정에 대해 알려줘.<br>
-        - <b>포름알데하이드</b>의 발암성 등급에 대해서 알려줘.
+        - <b><span class="title">에탄올</span></b>의 <span class="highlight">흡수</span> 과정에 대해 알려줘.<br>
+        - <b><span class="title">포름알데하이드</span></b>의 <span class="highlight">발암성 등급</span>에 대해서 알려줘.
     </div>
 
     <p style="text-align: center; margin-top: 15px;">
