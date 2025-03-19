@@ -1,5 +1,7 @@
 import streamlit as st
 import requests
+
+
 from dotenv import load_dotenv
 import os
 
@@ -120,13 +122,34 @@ if prompt:
             answer = "⚠️ 서버에서 올바른 JSON 응답을 받지 못했어요.\n\n관리자에게 문의해주세요."
 
     st.session_state.conversation.append(("ai", answer))
-    with st.chat_message("ai", avatar=BOT_AVATAR):
-        if answer: 
-            text = answer
+    # with st.chat_message("ai", avatar=BOT_AVATAR):
+    #     if answer: 
+    #         text = answer
             
-            for keyword in keywords:
-                text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
+    #         for keyword in keywords:
+    #             text = text.replace(keyword, f'<span style="font-size:20px; font-weight:bold;">{keyword}</span>')
 
+    #         st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
+    #     else:
+    #         st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
+
+    with st.chat_message("ai", avatar=BOT_AVATAR):
+        if answer:  
+            text = answer
+
+            # ✅ 줄 단위로 나누기
+            lines = text.split("\n")
+            processed_lines = []
+
+            for line in lines:
+                # ✅ keywords 리스트에 포함된 줄이면 볼드 처리
+                if any(line.startswith(keyword) for keyword in keywords):
+                    processed_lines.append(f"**{line}**")  # ✅ 줄 전체를 볼드 처리
+                else:
+                    processed_lines.append(line)  # ✅ 일반 텍스트 유지
+
+            # ✅ 줄바꿈 처리 후 Streamlit에 출력
+            text = "\n".join(processed_lines)
             st.markdown(text.replace("\n", "  \n"), unsafe_allow_html=True)
         else:
             st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
