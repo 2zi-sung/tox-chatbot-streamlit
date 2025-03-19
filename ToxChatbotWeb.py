@@ -35,7 +35,7 @@ st.markdown(
             color: #D0021B; /* 빨간색 강조 */
         }
         .example {
-            font-size: 18px;
+            font-size: 16px;
             background-color: #F4F8FF;
             text-align: justify;
             padding: 10px;
