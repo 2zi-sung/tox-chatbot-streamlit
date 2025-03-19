@@ -48,8 +48,7 @@ st.markdown(
 
     <p class="intro">
         본 페이지는 <span class="highlight">챗봇의 질문-답변 정확성 검증</span>을 위한 <span class="highlight">데모 서버</span>입니다.
-        UI 디자인이나 부가적인 기능 구현은 제외되었으며,
-        <strong>오로지 질의응답 테스트</strong>만을 목적으로 제공됩니다.
+        <br>UI 디자인이나 부가적인 기능 구현은 제외되었으며, <strong>오로지 질의응답 테스트</strong>만을 목적으로 제공됩니다.
     </p>
 
     <p class="intro">
