@@ -143,15 +143,15 @@ if prompt:
             processed_lines = []
 
             for line in lines:
-                # ✅ keywords 리스트에 포함된 줄이면 볼드 처리
+                # ✅ keywords 리스트에 포함된 줄이면 볼드 처리 (Markdown 헤더 적용)
                 if any(line.startswith(keyword) for keyword in keywords):
-                    processed_lines.append(f"**{line}**")  # ✅ 볼드 처리
+                    processed_lines.append(f"### {line}")  # ✅ Heading 3 적용 (볼드 + 크기 증가)
                 else:
                     processed_lines.append(line)  # ✅ 일반 텍스트 유지
 
-            # ✅ 줄바꿈을 유지하면서 Markdown 출력 (⚠ unsafe_allow_html 제거)
-            text = "\n\n".join(processed_lines)  # ✅ 두 줄 띄우기로 Markdown 줄바꿈 유지
-            st.markdown(text)  # ✅ 안전한 Markdown 처리
+            # ✅ Markdown 형식으로 출력 (줄바꿈 추가)
+            text = "\n\n".join(processed_lines)
+            st.markdown(text)  # ✅ Markdown으로 안전하게 출력
 
         else:
             st.error("출력할 텍스트가 없습니다. 'answer' 변수를 확인하세요.")
